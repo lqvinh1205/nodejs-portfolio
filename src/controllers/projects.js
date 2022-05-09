@@ -17,7 +17,7 @@ export const create = async (req, res) => {
 export const list = async (req, res) => {
     try {
 
-        const projects = await Project.find().exec()
+        const projects = await Projects.find().exec()
         res.json(projects)
     } catch (error) {
         res.status(400).json({
@@ -28,8 +28,7 @@ export const list = async (req, res) => {
 
 export const read = async (req, res) => {
     try {
-
-        const project = await Project.findById(req.body._id).exec()
+        const project = await Projects.findById(req.params.id).exec()
         res.json(project)
     } catch (error) {
         res.status(400).json({
@@ -41,7 +40,7 @@ export const read = async (req, res) => {
 export const remove = async (req, res) => {
     try {
 
-        const project = await Project.findByIdAndRemove(req.body._id).exec()
+        const project = await Projects.findByIdAndRemove(req.params.id).exec()
         res.json(project)
     } catch (error) {
         res.status(400).json({
@@ -53,7 +52,7 @@ export const remove = async (req, res) => {
 export const update = async (req, res) => {
     try {
 
-        const project = await Project.findIdAndUpdate(req.body._id).exec()
+        const project = await Projects.findByIdAndUpdate(req.params.id, req.body, { new: true}).exec()
         res.json(project)
     } catch (error) {
         res.status(400).json({
