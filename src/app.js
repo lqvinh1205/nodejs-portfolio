@@ -23,7 +23,7 @@ mongoose.connect("mongodb+srv://lqvinh1205:tmkgg123@cluster.rzbt7.mongodb.net/po
     .catch((error) => console.log(error))
  
 //connect server
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
     console.log("sever is running port: ", PORT);
 })
